@@ -1,8 +1,8 @@
 const job_model = require("../models/job");
 
-async function get() {
+async function get(id) {
   return await job_model
-    .find({})
+    .find({ companyID: id })
     .populate("customerID jobTypeID", "name surname");
 }
 
@@ -10,4 +10,23 @@ async function createJob(job) {
   return await job_model.create(job);
 }
 
-module.exports = { get, createJob };
+async function update(jobID, data) {
+  return await job_model.findOneAndUpdate({ _id: jobID }, data);
+}
+
+async function remove(jobID) {
+  return await job_model.deleteOne({ _id: jobID });
+}
+
+async function completeJob(id) {
+  return await job_model.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        status: true,
+      },
+    }
+  );
+}
+
+module.exports = { get, createJob, update, remove, completeJob };

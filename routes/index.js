@@ -9,6 +9,9 @@ const auth_controller = require("../controller/auth-controller");
 const account_controller = require("../controller/account-controller");
 const customer_controller = require("../controller/customer-controller");
 const job_controller = require("../controller/job-controller");
+const store_controller = require("../controller/store-controller");
+const product_controller = require("../controller/product-controller");
+const date_controller = require("../controller/date-controller");
 
 const routes = [
   {
@@ -98,13 +101,98 @@ const routes = [
     path: "/job",
     children: [
       {
-        path: "/get",
+        path: "/get/:id",
         handler: job_controller.get,
         method: "get",
       },
       {
+        path: "/complete/:id",
+        handler: job_controller.complete,
+        method: "put",
+      },
+      {
         path: "/create",
         handler: job_controller.create,
+        method: "post",
+      },
+      {
+        path: "/update/:id",
+        handler: job_controller.update,
+        method: "put",
+      },
+      {
+        path: "/remove/:id",
+        handler: job_controller.remove,
+        method: "delete",
+      },
+    ],
+  },
+  {
+    path: "/store",
+    children: [
+      {
+        path: "/:id",
+        handler: store_controller.get,
+        method: "get",
+      },
+      {
+        path: "/detail/:id",
+        handler: store_controller.getByStoreID,
+        method: "get",
+      },
+      {
+        path: "/create",
+        handler: store_controller.create,
+        method: "post",
+      },
+      {
+        path: "/update/:id",
+        handler: store_controller.update,
+        method: "put",
+      },
+      {
+        path: "/remove/:id",
+        handler: store_controller.remove,
+        method: "delete",
+      },
+    ],
+  },
+  {
+    path: "/product",
+    children: [
+      {
+        path: "/:id",
+        handler: product_controller.get,
+        method: "get",
+      },
+      {
+        path: "/category/:id",
+        handler: product_controller.getCategory,
+        method: "get",
+      },
+      {
+        path: "/create",
+        handler: product_controller.create,
+        method: "post",
+      },
+      {
+        path: "/createcategory",
+        handler: product_controller.createCategory,
+        method: "post",
+      },
+    ],
+  },
+  {
+    path: "/date",
+    children: [
+      {
+        path: "/:id",
+        handler: date_controller.get,
+        method: "get",
+      },
+      {
+        path: "/create",
+        handler: date_controller.create,
         method: "post",
       },
     ],

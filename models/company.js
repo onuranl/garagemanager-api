@@ -1,7 +1,10 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const CompanySchema = new mongoose.Schema({
-    name: {type: String, unique: true, required: true}
-})
+const CompanySchema = new mongoose.Schema(
+  {
+    name: { type: String, unique: true, required: true },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('companies', CompanySchema)
+module.exports = mongoose.model("companies", CompanySchema);

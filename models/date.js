@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const JobSchema = new mongoose.Schema(
+const DateSchema = new mongoose.Schema(
   {
     customerID: {
       type: mongoose.Types.ObjectId,
@@ -12,9 +12,6 @@ const JobSchema = new mongoose.Schema(
       ref: "customer.garage",
       required: true,
     },
-    photo: String,
-    date: String,
-    description: { type: String, required: true },
     jobTypeID: {
       type: mongoose.Types.ObjectId,
       ref: "jobType",
@@ -22,15 +19,13 @@ const JobSchema = new mongoose.Schema(
     },
     companyID: {
       type: mongoose.Types.ObjectId,
-      ref: "companyID",
+      ref: "companies",
       required: true,
     },
-    status: {
-      type: Boolean,
-      default: false,
-    },
+    date: { type: String, required: true },
+    description: String,
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("job", JobSchema);
+module.exports = mongoose.model("date", DateSchema);
