@@ -9,7 +9,7 @@ const JobSchema = new mongoose.Schema(
     },
     vehicleID: {
       type: mongoose.Types.ObjectId,
-      ref: "customer.garage",
+      ref: "vehicle",
       required: true,
     },
     photo: String,

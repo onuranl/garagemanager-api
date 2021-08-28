@@ -8,12 +8,12 @@ async function create(customer) {
   return await customer_repository.createCustomer(customer);
 }
 
-async function getVehicle(id) {
-  return await customer_repository.getVehicle(id);
-}
+// async function getVehicle(id) {
+//   return await customer_repository.getVehicle(id);
+// }
 
-async function addVehicle(id, data) {
-  return await customer_repository.addVehicle(id, data);
-}
+// async function addVehicle(id, data) {
+//   return await customer_repository.addVehicle(id, data);
+// }
 
-module.exports = { getCustomer, create, getVehicle, addVehicle };
+module.exports = { getCustomer, create };

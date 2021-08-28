@@ -9,7 +9,7 @@ const DateSchema = new mongoose.Schema(
     },
     vehicleID: {
       type: mongoose.Types.ObjectId,
-      ref: "customer.garage",
+      ref: "vehicle",
       required: true,
     },
     jobTypeID: {

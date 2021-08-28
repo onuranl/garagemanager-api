@@ -8,4 +8,8 @@ async function create(date) {
   return await date_repository.create(date);
 }
 
-module.exports = { get, create };
+async function remove(id) {
+  return await date_repository.remove(id);
+}
+
+module.exports = { get, create, remove };

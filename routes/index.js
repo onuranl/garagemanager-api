@@ -8,6 +8,7 @@ const jobType_controller = require("../controller/jobType-controller");
 const auth_controller = require("../controller/auth-controller");
 const account_controller = require("../controller/account-controller");
 const customer_controller = require("../controller/customer-controller");
+const vehicle_controller = require("../controller/vehicle-controller");
 const job_controller = require("../controller/job-controller");
 const store_controller = require("../controller/store-controller");
 const product_controller = require("../controller/product-controller");
@@ -94,6 +95,21 @@ const routes = [
         path: "/getvehicle/:id",
         handler: customer_controller.getVehicle,
         method: "get",
+      },
+    ],
+  },
+  {
+    path: "/vehicle",
+    children: [
+      {
+        path: "/get/:id",
+        handler: vehicle_controller.get,
+        method: "get",
+      },
+      {
+        path: "/create",
+        handler: vehicle_controller.create,
+        method: "post",
       },
     ],
   },
@@ -194,6 +210,11 @@ const routes = [
         path: "/create",
         handler: date_controller.create,
         method: "post",
+      },
+      {
+        path: "/remove/:id",
+        handler: date_controller.remove,
+        method: "delete",
       },
     ],
   },
