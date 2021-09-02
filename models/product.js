@@ -22,7 +22,11 @@ const ProductSchema = mongoose.Schema(
       ref: "productCategory",
       required: true,
     },
-    // companyId ?
+    companyID: {
+      type: mongoose.Types.ObjectId,
+      ref: "companies",
+      required: true,
+    },
   },
   { timestamps: true }
 );

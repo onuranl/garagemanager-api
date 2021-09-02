@@ -12,6 +12,18 @@ async function get(req, res) {
   }
 }
 
+async function getAll(req, res) {
+  try {
+    const result = await product_service.getAll(req.params.id);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
 async function create(req, res) {
   const {
     name,
@@ -25,6 +37,7 @@ async function create(req, res) {
     quantity,
     storeID,
     categoryID,
+    companyID,
   } = req.body;
 
   const payload = {
@@ -39,10 +52,23 @@ async function create(req, res) {
     quantity,
     storeID,
     categoryID,
+    companyID,
   };
 
   try {
     const result = await product_service.create(payload);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
+async function remove(req, res) {
+  try {
+    const result = await product_service.remove(req.params.id);
 
     return res.status(200).json(result);
   } catch (error) {
@@ -83,4 +109,4 @@ async function createCategory(req, res) {
   }
 }
 
-module.exports = { get, create, getCategory, createCategory };
+module.exports = { get, getAll, create, remove, getCategory, createCategory };

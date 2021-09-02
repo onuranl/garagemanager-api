@@ -13,6 +13,9 @@ const job_controller = require("../controller/job-controller");
 const store_controller = require("../controller/store-controller");
 const product_controller = require("../controller/product-controller");
 const date_controller = require("../controller/date-controller");
+const supplier_controller = require("../controller/supplier-controller");
+const purchase_controller = require("../controller/purchase-controller");
+const sell_controller = require("../controller/sell-controller");
 
 const routes = [
   {
@@ -182,9 +185,19 @@ const routes = [
         method: "get",
       },
       {
+        path: "/getall/:id",
+        handler: product_controller.getAll,
+        method: "get",
+      },
+      {
         path: "/category/:id",
         handler: product_controller.getCategory,
         method: "get",
+      },
+      {
+        path: "/remove/:id",
+        handler: product_controller.remove,
+        method: "delete",
       },
       {
         path: "/create",
@@ -215,6 +228,81 @@ const routes = [
         path: "/remove/:id",
         handler: date_controller.remove,
         method: "delete",
+      },
+    ],
+  },
+  {
+    path: "/supplier",
+    children: [
+      {
+        path: "/:id",
+        handler: supplier_controller.get,
+        method: "get",
+      },
+      {
+        path: "/create",
+        handler: supplier_controller.create,
+        method: "post",
+      },
+    ],
+  },
+  {
+    path: "/purchase",
+    children: [
+      {
+        path: "/create",
+        handler: purchase_controller.create,
+        method: "post",
+      },
+      {
+        path: "/:id",
+        handler: purchase_controller.get,
+        method: "get",
+      },
+      {
+        path: "/one/:id",
+        handler: purchase_controller.getByID,
+        method: "get",
+      },
+      {
+        path: "/remove/:id",
+        handler: purchase_controller.remove,
+        method: "delete",
+      },
+      {
+        path: "/update/:id",
+        handler: purchase_controller.update,
+        method: "put",
+      },
+    ],
+  },
+  {
+    path: "/sell",
+    children: [
+      {
+        path: "/create",
+        handler: sell_controller.create,
+        method: "post",
+      },
+      {
+        path: "/:id",
+        handler: sell_controller.get,
+        method: "get",
+      },
+      {
+        path: "/one/:id",
+        handler: sell_controller.getByID,
+        method: "get",
+      },
+      {
+        path: "/remove/:id",
+        handler: sell_controller.remove,
+        method: "delete",
+      },
+      {
+        path: "/update/:id",
+        handler: sell_controller.update,
+        method: "put",
       },
     ],
   },
