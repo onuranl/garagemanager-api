@@ -9,6 +9,19 @@ async function getByID(id) {
   return await purchase_repository.getByID(id);
 }
 
+async function getTotal(id) {
+  const data = await purchase_repository.getTotal(id);
+  if (data) {
+    var total = 0;
+    data.forEach((el) => {
+      total = total + el.totalPrice;
+    });
+    return { total };
+  } else {
+    throw new Error("Bulunumadı");
+  }
+}
+
 async function create(data) {
   return await purchase_repository.create(data);
 }
@@ -47,7 +60,6 @@ async function update(id, data) {
             const lastQuantity =
               product.quantity + update.products[i].quantity - oldQuantity;
 
-            console.log("son ürün miktarı" + lastQuantity);
             await product_model.findOneAndUpdate(
               {
                 _id: update.products[i].productID,
@@ -138,4 +150,8 @@ async function remove(id) {
   }
 }
 
-module.exports = { get, getByID, create, update, remove };
+async function pay(id) {
+  return await purchase_repository.pay(id);
+}
+
+module.exports = { get, getByID, getTotal, create, update, remove, pay };

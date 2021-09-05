@@ -24,6 +24,7 @@ const DateSchema = new mongoose.Schema(
     },
     date: { type: String, required: true },
     description: String,
+    status: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

@@ -220,6 +220,11 @@ const routes = [
         method: "get",
       },
       {
+        path: "/active/:id",
+        handler: date_controller.getActive,
+        method: "get",
+      },
+      {
         path: "/create",
         handler: date_controller.create,
         method: "post",
@@ -228,6 +233,11 @@ const routes = [
         path: "/remove/:id",
         handler: date_controller.remove,
         method: "delete",
+      },
+      {
+        path: "/complete/:id",
+        handler: date_controller.complete,
+        method: "put",
       },
     ],
   },
@@ -253,6 +263,16 @@ const routes = [
         path: "/create",
         handler: purchase_controller.create,
         method: "post",
+      },
+      {
+        path: "/pay/:id",
+        handler: purchase_controller.pay,
+        method: "put",
+      },
+      {
+        path: "/total/:id",
+        handler: purchase_controller.getTotal,
+        method: "get",
       },
       {
         path: "/:id",
@@ -283,6 +303,16 @@ const routes = [
         path: "/create",
         handler: sell_controller.create,
         method: "post",
+      },
+      {
+        path: "/collect/:id",
+        handler: sell_controller.collect,
+        method: "put",
+      },
+      {
+        path: "/total/:id",
+        handler: sell_controller.getTotal,
+        method: "get",
       },
       {
         path: "/:id",

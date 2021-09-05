@@ -11,6 +11,14 @@ async function getByID(id) {
   return await sell_model.findById(id);
 }
 
+async function getTotal(id) {
+  return await sell_model.find({
+    companyID: id,
+    is_deleted: false,
+    status: true,
+  });
+}
+
 async function create(data) {
   return await sell_model.create(data);
 }
@@ -29,4 +37,16 @@ async function remove(id) {
     }
   );
 }
-module.exports = { get, getByID, create, update, remove };
+
+async function collect(id) {
+  return await sell_model.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        status: true,
+      },
+    }
+  );
+}
+
+module.exports = { get, getByID, getTotal, create, update, remove, collect };

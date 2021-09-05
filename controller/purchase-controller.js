@@ -24,6 +24,18 @@ async function getByID(req, res) {
   }
 }
 
+async function getTotal(req, res) {
+  try {
+    const result = await purchase_service.getTotal(req.params.id);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
 async function create(req, res) {
   const { supplierID, invoiceNo, date, address, products, status, companyID } =
     req.body;
@@ -98,4 +110,16 @@ async function remove(req, res) {
   }
 }
 
-module.exports = { get, getByID, create, update, remove };
+async function pay(req, res) {
+  try {
+    const result = await purchase_service.pay(req.params.id);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
+module.exports = { get, getByID, getTotal, create, update, remove, pay };
