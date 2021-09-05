@@ -6,6 +6,10 @@ async function get(id) {
     .populate("customerID jobTypeID", "name surname");
 }
 
+async function getByID(id) {
+  return await job_model.findById(id);
+}
+
 async function createJob(job) {
   return await job_model.create(job);
 }
@@ -29,4 +33,4 @@ async function completeJob(id) {
   );
 }
 
-module.exports = { get, createJob, update, remove, completeJob };
+module.exports = { get, getByID, createJob, update, remove, completeJob };

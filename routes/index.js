@@ -125,6 +125,11 @@ const routes = [
         method: "get",
       },
       {
+        path: "/one/:id",
+        handler: job_controller.getByID,
+        method: "get",
+      },
+      {
         path: "/complete/:id",
         handler: job_controller.complete,
         method: "put",
