@@ -5,12 +5,20 @@ async function get(id) {
   return await product_model.find({ storeID: id });
 }
 
+async function getByProductID(id) {
+  return await product_model.findOne({ _id: id });
+}
+
 async function getAll(companyID) {
   return await product_model.find({ companyID: companyID });
 }
 
 async function create(product) {
   return await product_model.create(product);
+}
+
+async function update(id, data) {
+  return await product_model.findOneAndUpdate({ _id: id }, data);
 }
 
 async function remove(productID) {
@@ -25,4 +33,13 @@ async function createCategory(category) {
   return await productCategory_model.create(category);
 }
 
-module.exports = { get, getAll, create, remove, getCategory, createCategory };
+module.exports = {
+  get,
+  getByProductID,
+  getAll,
+  create,
+  update,
+  remove,
+  getCategory,
+  createCategory,
+};

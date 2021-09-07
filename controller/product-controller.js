@@ -12,6 +12,18 @@ async function get(req, res) {
   }
 }
 
+async function getByProductID(req, res) {
+  try {
+    const result = await product_service.getByProductID(req.params.id);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
 async function getAll(req, res) {
   try {
     const result = await product_service.getAll(req.params.id);
@@ -66,6 +78,44 @@ async function create(req, res) {
   }
 }
 
+async function update(req, res) {
+  const {
+    name,
+    stockNo,
+    barcodeNo,
+    photo,
+    kdv,
+    price,
+    kdv_is_included,
+    discountedPrice,
+    quantity,
+    categoryID,
+  } = req.body;
+
+  const payload = {
+    name,
+    stockNo,
+    barcodeNo,
+    photo,
+    kdv,
+    price,
+    kdv_is_included,
+    discountedPrice,
+    quantity,
+    categoryID,
+  };
+
+  try {
+    const result = await product_service.update(req.params.id, payload);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
 async function remove(req, res) {
   try {
     const result = await product_service.remove(req.params.id);
@@ -109,4 +159,13 @@ async function createCategory(req, res) {
   }
 }
 
-module.exports = { get, getAll, create, remove, getCategory, createCategory };
+module.exports = {
+  get,
+  getByProductID,
+  getAll,
+  create,
+  update,
+  remove,
+  getCategory,
+  createCategory,
+};
