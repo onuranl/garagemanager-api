@@ -33,7 +33,7 @@ const PurchaseSchema = new mongoose.Schema(
       ref: "companies",
       required: true,
     },
-    totalPrice: { type: Number, default: 31 },
+    totalPrice: { type: Number, default: 0 },
     is_deleted: { type: Boolean, default: false },
   },
   { timestamps: true }

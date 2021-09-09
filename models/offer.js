@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const product_model = require("../models/product");
-
 const ProductsSchema = new mongoose.Schema({
   name: String,
   productID: {
@@ -15,7 +13,7 @@ const ProductsSchema = new mongoose.Schema({
   total: { type: Number, required: true },
 });
 
-const SellSchema = new mongoose.Schema(
+const OfferSchema = new mongoose.Schema(
   {
     customerID: {
       type: mongoose.Types.ObjectId,
@@ -38,35 +36,4 @@ const SellSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-SellSchema.pre("save", async function () {
-  const result = this;
-  if (result) {
-    try {
-      for (let i = 0; i < result.products.length; i++) {
-        console.log(result.products[i].productID);
-
-        let product = await product_model.findOne({
-          _id: result.products[i].productID,
-        });
-
-        const lastQuantity = product.quantity - result.products[i].quantity;
-
-        await product_model.findOneAndUpdate(
-          {
-            _id: result.products[i].productID,
-          },
-          {
-            quantity: lastQuantity,
-          }
-        );
-      }
-    } catch (error) {
-      console.log(error);
-      next(error);
-    }
-  } else {
-    next();
-  }
-});
-
-module.exports = mongoose.model("sell", SellSchema);
+module.exports = mongoose.model("offer", OfferSchema);

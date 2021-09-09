@@ -7,12 +7,20 @@ async function get(id) {
     .exec();
 }
 
+async function getByID(id) {
+  return await date_model.findOne({ _id: id });
+}
+
 async function getActive(id) {
   return await date_model.find({ companyID: id, status: false });
 }
 
 async function create(date) {
   return await date_model.create(date);
+}
+
+async function update(id, data) {
+  return await date_model.findOneAndUpdate({ _id: id }, data);
 }
 
 async function remove(id) {
@@ -30,4 +38,4 @@ async function complete(id) {
   );
 }
 
-module.exports = { get, getActive, create, remove, complete };
+module.exports = { get, getByID, getActive, create, update, remove, complete };

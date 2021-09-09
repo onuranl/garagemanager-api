@@ -17,6 +17,7 @@ const supplier_controller = require("../controller/supplier-controller");
 const purchase_controller = require("../controller/purchase-controller");
 const sell_controller = require("../controller/sell-controller");
 const user_controller = require("../controller/user-controller");
+const offer_controller = require("../controller/offer-controller");
 
 const routes = [
   {
@@ -261,6 +262,11 @@ const routes = [
         method: "get",
       },
       {
+        path: "/one/:id",
+        handler: date_controller.getByID,
+        method: "get",
+      },
+      {
         path: "/active/:id",
         handler: date_controller.getActive,
         method: "get",
@@ -269,6 +275,11 @@ const routes = [
         path: "/create",
         handler: date_controller.create,
         method: "post",
+      },
+      {
+        path: "/update/:id",
+        handler: date_controller.update,
+        method: "put",
       },
       {
         path: "/remove/:id",
@@ -373,6 +384,36 @@ const routes = [
       {
         path: "/update/:id",
         handler: sell_controller.update,
+        method: "put",
+      },
+    ],
+  },
+  {
+    path: "/offer",
+    children: [
+      {
+        path: "/create",
+        handler: offer_controller.create,
+        method: "post",
+      },
+      {
+        path: "/:id",
+        handler: offer_controller.get,
+        method: "get",
+      },
+      {
+        path: "/one/:id",
+        handler: offer_controller.getByID,
+        method: "get",
+      },
+      {
+        path: "/remove/:id",
+        handler: offer_controller.remove,
+        method: "delete",
+      },
+      {
+        path: "/update/:id",
+        handler: offer_controller.update,
         method: "put",
       },
     ],
