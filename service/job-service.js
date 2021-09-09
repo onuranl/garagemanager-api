@@ -18,7 +18,7 @@ async function update(id, data) {
   if (!job.status) {
     return await job_repository.update(id, data);
   } else {
-    throw new Error("Güncelleme yapılamaz !");
+    throw new Error("Servis muhasebeye gönderilmiştir, güncelleme yapılamaz !");
   }
 }
 

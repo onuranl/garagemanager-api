@@ -28,6 +28,7 @@ async function create(req, res) {
   const {
     customerID,
     vehicleID,
+    products,
     date,
     photo,
     description,
@@ -35,14 +36,21 @@ async function create(req, res) {
     companyID,
   } = req.body;
 
+  var totalPrice = 0;
+  products.forEach((el) => {
+    totalPrice = totalPrice + el.total;
+  });
+
   const payload = {
     customerID,
     vehicleID,
+    products,
     date,
     photo,
     description,
     jobTypeID,
     companyID,
+    totalPrice,
   };
 
   try {
@@ -60,6 +68,7 @@ async function update(req, res) {
   const {
     customerID,
     vehicleID,
+    products,
     date,
     photo,
     description,
@@ -67,14 +76,21 @@ async function update(req, res) {
     companyID,
   } = req.body;
 
+  var totalPrice = 0;
+  products.forEach((el) => {
+    totalPrice = totalPrice + el.total;
+  });
+
   const payload = {
     customerID,
     vehicleID,
+    products,
     date,
     photo,
     description,
     jobTypeID,
     companyID,
+    totalPrice,
   };
 
   try {

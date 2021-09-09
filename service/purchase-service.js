@@ -29,7 +29,9 @@ async function create(data) {
 async function update(id, data) {
   const old = await purchase_repository.update(id, data);
   const update = await purchase_repository.getByID(id);
-
+  if (old.status) {
+    throw new Error("Alış faturası ödenmiştir, düzenleme yapılamaz. ");
+  }
   if (old && update) {
     try {
       if (update.products.length >= old.products.length) {

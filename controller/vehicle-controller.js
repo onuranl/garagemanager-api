@@ -14,7 +14,6 @@ async function get(req, res) {
 
 async function create(req, res) {
   const {
-    type,
     brand,
     model,
     year,
@@ -30,7 +29,6 @@ async function create(req, res) {
   } = req.body;
 
   const payload = {
-    type,
     brand,
     model,
     year,

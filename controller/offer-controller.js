@@ -98,4 +98,16 @@ async function remove(req, res) {
   }
 }
 
-module.exports = { get, getByID, create, update, remove };
+async function complete(req, res) {
+  try {
+    const result = await offer_service.complete(req.params.id);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
+module.exports = { get, getByID, create, update, remove, complete };

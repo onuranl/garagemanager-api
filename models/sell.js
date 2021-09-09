@@ -24,7 +24,7 @@ const SellSchema = new mongoose.Schema(
     },
     invoiceNo: { type: String, required: true },
     date: { type: String, required: true },
-    address: { type: String, required: true },
+    address: { type: String, required: false },
     products: [ProductsSchema],
     status: { type: Boolean, default: false },
     companyID: {

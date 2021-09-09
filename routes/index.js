@@ -416,6 +416,11 @@ const routes = [
         handler: offer_controller.update,
         method: "put",
       },
+      {
+        path: "/complete/:id",
+        handler: offer_controller.complete,
+        method: "put",
+      },
     ],
   },
 ];

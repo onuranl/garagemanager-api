@@ -29,7 +29,9 @@ async function getTotal(id) {
 async function update(id, data) {
   const old = await sell_repository.update(id, data);
   const update = await sell_repository.getByID(id);
-
+  if (old.status) {
+    throw new Error("Satış faturası tahsil edilmiştir, düzenleme yapılamaz. ");
+  }
   if (old && update) {
     try {
       if (update.products.length >= old.products.length) {

@@ -20,4 +20,8 @@ async function remove(id) {
   return await offer_repository.remove(id);
 }
 
-module.exports = { get, getByID, create, update, remove };
+async function complete(id) {
+  return await offer_repository.complete(id);
+}
+
+module.exports = { get, getByID, create, update, remove, complete };
