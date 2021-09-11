@@ -1,4 +1,5 @@
 const job_service = require("../service/job-service");
+const uploadImage = require("../helpers/upload-image");
 
 async function get(req, res) {
   try {
@@ -24,6 +25,25 @@ async function getByID(req, res) {
   }
 }
 
+async function upload(req, res) {
+  try {
+    const myFile = req.file;
+    console.log("controller job id", req.params.id);
+    const imageUrl = await uploadImage(myFile, req.params.id);
+
+    await job_service.upload(req.params.id, imageUrl);
+
+    res.status(200).json({
+      message: "Upload was successful",
+      data: imageUrl,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
 async function create(req, res) {
   const {
     customerID,
@@ -35,6 +55,21 @@ async function create(req, res) {
     jobTypeID,
     companyID,
   } = req.body;
+
+  // console.log(req.body);
+  // console.log(req.file);
+
+  // var photo = "";
+  // if (req.file) {
+  //   try {
+  //     const myFile = req.file;
+  //     photo = await uploadImage(myFile);
+  //   } catch (error) {
+  //     console.log("resim yüklenemedi", error);
+  //   }
+  // }
+
+  // console.log("ikinci aşamaya geçildi");
 
   var totalPrice = 0;
   products.forEach((el) => {
@@ -131,6 +166,7 @@ async function complete(req, res) {
 module.exports = {
   get,
   getByID,
+  upload,
   create,
   update,
   remove,

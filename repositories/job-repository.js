@@ -10,6 +10,17 @@ async function getByID(id) {
   return await job_model.findById(id);
 }
 
+async function upload(jobID, url) {
+  return await job_model.findOneAndUpdate(
+    { _id: jobID },
+    {
+      $set: {
+        photo: url,
+      },
+    }
+  );
+}
+
 async function createJob(job) {
   return await job_model.create(job);
 }
@@ -33,4 +44,12 @@ async function completeJob(id) {
   );
 }
 
-module.exports = { get, getByID, createJob, update, remove, completeJob };
+module.exports = {
+  get,
+  getByID,
+  upload,
+  createJob,
+  update,
+  remove,
+  completeJob,
+};

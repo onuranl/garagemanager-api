@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "garagemanager-325608",
+  "private_key_id": "c2d123770aa9f6929b576de20808920a87f35be3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDrUq9RhNxY686B\n+7F4SR+tmIYP1PiN4fFUsq+tyfyeT26D0yxkXoQOEiUqPmebNrkYcbs0UW5p5XGH\nF6xyQs432TqGEem857ogRl+byXoCVOtE/388XeBBKZV3hjUgT2vq1RACmNYOa27C\n2lDgY40t51Xu/ZOy7jU+MP3T2g3Lsj46xRg/u1OsFEldSFbhUsjhBBNNQ/bZOl/E\nIsxWGj8Na7CfXGJqHStwt05NHQ69sy6DAuBP1USaWgBG+aSn4VVBt3qTySLrHU7A\nw/KUFhddgdMIykqpNu5NvXNmeMiJbWUjKPK3MONribmnzdn+VY+7pzBU/qp4KAfF\n0JvEOIMbAgMBAAECggEAEBcCN7+u1UGiSA7ujnvpd5QjLnfwWrslJhZlnqtd43Eo\n7EiHE4HG47Nn6SCFMv6l3z7/fs9GjmUKwyLiPpnEwdrPfpVA9xKdDlHhfaRj/D7U\nK06Q447Do5D1UEvT3BayGUdiJdtPX4MG+rm0p/MGlynnHUUnUSeqakstP8v7/35Z\n4T25aEPEiBZdpo9cqjrEN8H/e7YTDkEdHocgtKsRbdmKIHECz4l7p8JJ4vtDrZhl\nHwsePhkfist1pAZKas4MC3UnIZP9fBx7JXOBXVsRMh1n3fBKRcm8ZfztNPLRIBne\nRJckoz/o4Fv/Y7sEVV/xzXuX4XX7wMvaPyibnQyCOQKBgQD8QGuiWrEUMRXGF1Wo\nSGrjjF58Ni/QsT2a5ZX1mUZxfDjD4gAlFHjNfkC04ipCsEZyNAnQOPRE00dcSH9v\n8LlLPGuQ8CapsEmstvS/Y1EemogYckjjx2KPBeQi64uUMO7EWmvS0CwTPXcSWvCY\neECgc6tb/iMW4FByNMQSnN2w5QKBgQDu0d3of5Ekzxh2/pd9UT1zf14p7l7GN0nf\nkc9wbeLv2ZWlnSGNdO69SI/BvHbmvX7crRwRODjUIom7Y8XgyS7YoaZ8w7wfEpvq\nmPCwUDkzMgCHQ/GJRR8H1IqxNWXb6bhAUoNaYZa3XsFB6OumKiS/5VrCSHf8jcCs\nMIHk3f4j/wKBgEVtnbJj79U05V9OUN8uf2z914ushmCUR/Z4NlwQwdi+bglMDOon\nxlAY7cpbbXJJfjo0pHbRFjpTRJLbyWeQBA/3I0wTLTELOlv1R0veFBeuRMMlwXYg\nDLp8zpvl5Nb22ODmWkL91QO+qSU+LnZosrD25TU+r32+Y6XrbAQLdOEZAoGAKWZm\nQqTCo4/nHNG7rzTDI1+EEl7JPTFedAxR2pqiCZQ9le0sYNpRfKy0hxBFyHA3Ksgz\nomSNrXCjUcHVDsexgEpdkylXVkeikcObjeUKVW6omspTd8lsvK3CsT+hfcMBdt0W\n+jcKqpUZiXR4TWDm6AE5f46ShkyIhxENo4A8Sz8CgYASgJ2bDNN6+sfjfZe94mK6\n/OKwyEUp+UGvN7sfBEz5RDc0486O5eoiQbIZ8ouIHF0Gs46m9bxR/5wa4Vm5J1Rj\nvegQDGZKXcqjaMI2N/8UMa/AjJp0+8GVCxkB2udo8ivlJEJt/t9rjtUw+plrSqd5\nbDy+YYhPT8hjJ8DeSPZXKg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "garagemanager-976@garagemanager-325608.iam.gserviceaccount.com",
+  "client_id": "113634051139393341152",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/garagemanager-976%40garagemanager-325608.iam.gserviceaccount.com"
+}

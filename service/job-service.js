@@ -8,6 +8,10 @@ async function getByID(id) {
   return await job_repository.getByID(id);
 }
 
+async function upload(id, url) {
+  return await job_repository.upload(id, url);
+}
+
 async function create(job) {
   return await job_repository.createJob(job);
 }
@@ -30,4 +34,4 @@ async function complete(id) {
   return await job_repository.completeJob(id);
 }
 
-module.exports = { get, getByID, create, update, remove, complete };
+module.exports = { get, getByID, upload, create, update, remove, complete };

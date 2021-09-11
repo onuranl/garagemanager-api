@@ -172,6 +172,11 @@ const routes = [
         method: "put",
       },
       {
+        path: "/upload/:id",
+        handler: job_controller.upload,
+        method: "put",
+      },
+      {
         path: "/remove/:id",
         handler: job_controller.remove,
         method: "delete",
