@@ -12,6 +12,11 @@ async function getAll(id) {
   return await product_repository.getAll(id);
 }
 
+async function upload(id, url) {
+  console.log(url);
+  return await product_repository.upload(id, url);
+}
+
 async function create(product) {
   return await product_repository.create(product);
 }
@@ -36,6 +41,7 @@ module.exports = {
   get,
   getByProductID,
   getAll,
+  upload,
   create,
   update,
   remove,

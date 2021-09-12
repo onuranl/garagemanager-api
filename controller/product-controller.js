@@ -1,4 +1,5 @@
 const product_service = require("../service/product-service");
+const uploadImage = require("../helpers/upload-image");
 
 async function get(req, res) {
   try {
@@ -29,6 +30,25 @@ async function getAll(req, res) {
     const result = await product_service.getAll(req.params.id);
 
     return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
+async function upload(req, res) {
+  try {
+    const myFile = req.file;
+    await uploadImage.uploadImage(myFile);
+    const imageURL = await uploadImage.renameFile(myFile, req.params.id);
+
+    await product_service.upload(req.params.id, imageURL);
+
+    res.status(200).json({
+      message: "Upload was successful",
+      data: imageURL,
+    });
   } catch (error) {
     return res.status(400).json({
       error: error.message || "Bir hata meydana geldi",
@@ -163,6 +183,7 @@ module.exports = {
   get,
   getByProductID,
   getAll,
+  upload,
   create,
   update,
   remove,

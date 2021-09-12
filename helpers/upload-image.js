@@ -13,13 +13,11 @@ const { format } = util;
  *   "originalname" and "buffer" as keys
  */
 
-const uploadImage = (file, jobID) =>
+const uploadImage = (file) =>
   new Promise((resolve, reject) => {
     const { originalname, buffer } = file;
 
     const blob = bucket.file(originalname.replace(/ /g, "_"));
-    const name = `${jobID}${blob.name}`;
-    console.log(bucket);
     const blobStream = blob.createWriteStream({
       resumable: false,
     });
@@ -30,7 +28,6 @@ const uploadImage = (file, jobID) =>
           `https://storage.googleapis.com/${bucket.name}/${blob.name}`
         );
         resolve(publicUrl);
-        console.log(jobID);
       })
       .on("error", (err) => {
         reject(`Unable to upload image, something went wrong`);
@@ -39,4 +36,11 @@ const uploadImage = (file, jobID) =>
       .end(buffer);
   });
 
-module.exports = uploadImage;
+async function renameFile(file, id) {
+  const blob = file.originalname.replace(/ /g, "_");
+  await bucket.file(blob).rename(`${id}${blob}`);
+
+  return `https://storage.googleapis.com/${bucket.name}/${id}${blob}`;
+}
+
+module.exports = { uploadImage, renameFile };

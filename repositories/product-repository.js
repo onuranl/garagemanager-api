@@ -13,6 +13,17 @@ async function getAll(companyID) {
   return await product_model.find({ companyID: companyID });
 }
 
+async function upload(productID, url) {
+  return await product_model.findOneAndUpdate(
+    { _id: productID },
+    {
+      $set: {
+        photo: url,
+      },
+    }
+  );
+}
+
 async function create(product) {
   return await product_model.create(product);
 }
@@ -37,6 +48,7 @@ module.exports = {
   get,
   getByProductID,
   getAll,
+  upload,
   create,
   update,
   remove,

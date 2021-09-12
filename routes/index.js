@@ -242,6 +242,11 @@ const routes = [
         method: "delete",
       },
       {
+        path: "/upload/:id",
+        handler: product_controller.upload,
+        method: "put",
+      },
+      {
         path: "/update/:id",
         handler: product_controller.update,
         method: "put",
