@@ -4,7 +4,7 @@ async function get(req, res) {
   try {
     const result = await sell_service.get(req.params.id);
 
-    return res.status(200).json(result);
+    return res.status(200).json(result.reverse());
   } catch (error) {
     return res.status(400).json({
       error: error.message || "Bir hata meydana geldi",
