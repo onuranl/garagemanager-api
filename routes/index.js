@@ -377,6 +377,11 @@ const routes = [
         method: "get",
       },
       {
+        path: "/chart/:id",
+        handler: sell_controller.getChartData,
+        method: "get",
+      },
+      {
         path: "/:id",
         handler: sell_controller.get,
         method: "get",

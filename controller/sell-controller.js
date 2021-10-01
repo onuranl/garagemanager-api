@@ -36,6 +36,18 @@ async function getTotal(req, res) {
   }
 }
 
+async function getChartData(req, res) {
+  try {
+    const result = await sell_service.getChartData(req.params.id);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({
+      error: error.message || "Bir hata meydana geldi",
+    });
+  }
+}
+
 async function create(req, res) {
   const { customerID, invoiceNo, date, address, products, status, companyID } =
     req.body;
@@ -122,4 +134,13 @@ async function collect(req, res) {
   }
 }
 
-module.exports = { get, getByID, getTotal, create, update, remove, collect };
+module.exports = {
+  get,
+  getByID,
+  getTotal,
+  getChartData,
+  create,
+  update,
+  remove,
+  collect,
+};

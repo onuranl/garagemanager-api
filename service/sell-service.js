@@ -26,6 +26,23 @@ async function getTotal(id) {
   }
 }
 
+async function getChartData(id) {
+  const today = new Date();
+  const date = today.toISOString().slice(0, 10).split("-");
+  const constant = today.toISOString().slice(0, 8);
+  const day = parseInt(date[2]);
+  const result = [];
+  for (let i = day; day - 6 <= i && 0 < i; i--) {
+    let data = await sell_repository.getChartData(id, constant, i);
+    var total = 0;
+    data.forEach((el) => {
+      total = total + el.totalPrice;
+    });
+    result.push(total);
+  }
+  return result;
+}
+
 async function update(id, data) {
   const old = await sell_repository.update(id, data);
   const update = await sell_repository.getByID(id);
@@ -156,4 +173,13 @@ async function collect(id) {
   return await sell_repository.collect(id);
 }
 
-module.exports = { get, getByID, getTotal, create, update, remove, collect };
+module.exports = {
+  get,
+  getByID,
+  getTotal,
+  getChartData,
+  create,
+  update,
+  remove,
+  collect,
+};
