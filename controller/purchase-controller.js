@@ -41,9 +41,12 @@ async function create(req, res) {
     req.body;
 
   var totalPrice = 0;
-  products.forEach((el) => {
-    totalPrice = totalPrice + el.total;
-  });
+
+  if (products.length) {
+    products.forEach((el) => {
+      totalPrice = totalPrice + el.total;
+    });
+  }
 
   const payload = {
     supplierID,
