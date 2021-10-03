@@ -9,7 +9,7 @@ const multer = require("multer");
 const router = require("./routes/index");
 
 mongoose.connect(
-  process.env.DATABASE_CONNECTION_STRING,
+  process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -38,6 +38,8 @@ app.use(multerMid.single("file"));
 
 app.use("/", router);
 
-app.listen(8000, () => {
-  console.log("listening on 8000");
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  console.log(`Listening on ${port}`);
 });
